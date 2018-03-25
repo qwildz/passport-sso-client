@@ -1,0 +1,34 @@
+{
+    "name": "qwildz/sso-client-compat",
+    "description": "SSO Client Library for PHP >= 5.1.2 Support",
+    "keywords": [
+        "sso",
+        "client",
+        "laravel",
+        "passport",
+        "compat",
+        "custom",
+        "openid connect",
+        "openid",
+        "jwt",
+        "session"
+    ],
+    "require": {
+        "firebase/php-jwt": "^5.0",
+        "laravel/socialite": "^3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Muhammad Resna Rizki Pratama",
+            "email": "resnarizki29@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Qwildz\\SSOClient\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
