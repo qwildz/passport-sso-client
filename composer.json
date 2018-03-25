@@ -1,6 +1,6 @@
 {
-    "name": "qwildz/sso-client-compat",
-    "description": "SSO Client Library for PHP >= 5.1.2 Support",
+    "name": "qwildz/passport-sso-client",
+    "description": "SSO Client Library for Laravel",
     "keywords": [
         "sso",
         "client",
@@ -9,6 +9,8 @@
         "compat",
         "custom",
         "openid connect",
+        "laravel",
+        "socialite",
         "openid",
         "jwt",
         "session"
