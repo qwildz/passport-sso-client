@@ -1,16 +1,13 @@
 <?php
-namespace Qwildz\PassportExtended;
+namespace Qwildz\SSOClient;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Socialite\Contracts\Factory;
-use Qwildz\SSOClient\PassportSSOProvider;
-use Qwildz\SSOClient\SSOClient;
 
 class PassportSSOClientServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      */
