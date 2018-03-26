@@ -1,4 +1,5 @@
 <?php
+
 namespace Qwildz\SSOClient;
 
 use GuzzleHttp\Client;
@@ -14,12 +15,12 @@ class PassportSSOClientServiceProvider extends ServiceProvider
     public function boot()
     {
         $socialite = $this->app->make(Factory::class);
-        $socialite->extend('sso', function($app) use ($socialite) {
+        $socialite->extend('sso', function ($app) use ($socialite) {
             $config = $app['config']['sso'];
             return $socialite->buildProvider(PassportSSOProvider::class, $config);
         });
 
-        $this->app->singleton(SSOClient::class, function() {
+        $this->app->singleton(SSOClient::class, function () {
             return new SSOClient(new Client());
         });
 
@@ -29,7 +30,7 @@ class PassportSSOClientServiceProvider extends ServiceProvider
 
     protected function setupConfig()
     {
-        $source = realpath(__DIR__.'/../resources/config/sso.php');
+        $source = realpath(__DIR__ . '/../resources/config/sso.php');
         $this->publishes([$source => config_path('sso.php')]);
         $this->mergeConfigFrom($source, 'sso');
     }
@@ -40,7 +41,7 @@ class PassportSSOClientServiceProvider extends ServiceProvider
             'namespace' => '\Qwildz\SSOClient\Http\Controllers',
         ];
 
-        Route::group($options, function ($router)  {
+        Route::group($options, function ($router) {
             $router->group(['middleware' => ['slo']], function ($router) {
                 $router->post('/logoutSSO', [
                     'uses' => 'SSOController@handleLogout',

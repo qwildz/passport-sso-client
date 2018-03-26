@@ -19,7 +19,7 @@ class SSOController
              abort(400, 'Bad request');
         }
 
-        $claims = (array) $token;
+        $claims = (array)$token;
 
         if ((!$this->validateLogoutToken($claims))
             || (!array_key_exists('sid', $claims))

@@ -21,7 +21,7 @@ class PassportSSOProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase(config('sso.url').'/oauth/authorize', $state);
+        return $this->buildAuthUrlFromBase(config('sso.url') . '/oauth/authorize', $state);
     }
 
     /**
@@ -31,12 +31,12 @@ class PassportSSOProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenUrl()
     {
-        return config('sso.url').'/oauth/token';
+        return config('sso.url') . '/oauth/token';
     }
 
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     protected function getTokenFields($code)
     {
         return array_add(
@@ -52,7 +52,7 @@ class PassportSSOProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get(config('sso.url').'/api/user', [
+        $response = $this->getHttpClient()->get(config('sso.url') . '/api/user', [
             'headers' => [
                 'Authorization' => 'Bearer ' . $token
             ]
@@ -71,8 +71,8 @@ class PassportSSOProvider extends AbstractProvider implements ProviderInterface
     {
         $usermap = array();
 
-        foreach(config('sso.usermap', []) as $key => $value) {
-            if(is_numeric($key)) {
+        foreach (config('sso.usermap', []) as $key => $value) {
+            if (is_numeric($key)) {
                 $usermap[$value] = $user[$value];
             } else {
                 $usermap[$key] = $user[$value];

@@ -16,7 +16,7 @@ class SSOClient
 
     public function setSid($accessToken)
     {
-        $this->client->post(config('sso.url').'/session/set-sid', [
+        $this->client->post(config('sso.url') . '/session/set-sid', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => 'Bearer ' . $accessToken,
@@ -31,8 +31,8 @@ class SSOClient
 
     public function logout()
     {
-        if($token = session('access_token')) {
-            $this->client->delete(config('sso.url').'/session/'.$token);
+        if ($token = session('access_token')) {
+            $this->client->delete(config('sso.url') . '/session/' . $token);
         }
     }
 }
