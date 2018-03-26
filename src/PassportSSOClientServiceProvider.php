@@ -41,7 +41,7 @@ class PassportSSOClientServiceProvider extends ServiceProvider
         ];
 
         Route::group($options, function ($router)  {
-            $router->group(['middleware' => ['api']], function ($router) {
+            $router->group(['middleware' => ['slo']], function ($router) {
                 $router->post('/logoutSSO', [
                     'uses' => 'SSOController@handleLogout',
                 ]);
