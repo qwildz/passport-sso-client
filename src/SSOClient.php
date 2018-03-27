@@ -32,7 +32,13 @@ class SSOClient
     public function logout()
     {
         if ($token = session('access_token')) {
-            $this->client->delete(config('sso.url') . '/session/' . $token);
+            $this->client->delete(config('sso.url') . '/session/' . session()->getId(), [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Bearer ' . $token,
+                    'Content-Type' => 'application/json',
+                ]
+            ]);
         }
     }
 }
