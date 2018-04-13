@@ -54,9 +54,11 @@ class PassportSSOClientServiceProvider extends ServiceProvider
                     'uses' => 'SSOController@handleLogout',
                 ]);
             });
-        });
 
-        Route::view('/rp-frame', 'passportsso::rpframe');
+            $router->group(['middleware' => ['web']], function ($router) {
+                $router->view('/rp-frame', 'passportsso::rpframe');
+            });
+        });
     }
 
     public function register()
