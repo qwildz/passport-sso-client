@@ -5,8 +5,6 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <meta name="robots" content="noindex, nofollow">
     <title>RP Frame</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.min.js"></script>
     <script>
         if (self == top) {
             window.location.href = 'about:blank';
