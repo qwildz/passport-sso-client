@@ -16,7 +16,7 @@ class SSOController
         try {
             $token = JWT::decode($logoutToken, config('sso.client_secret'), array('HS256'));
         } catch (\Exception $e) {
-             abort(400, 'Bad request');
+            abort(400, 'Bad request');
         }
 
         $claims = (array)$token;
@@ -25,8 +25,9 @@ class SSOController
             || (!array_key_exists('sid', $claims))
             || (!array_key_exists('events', $claims))
             || (!array_key_exists('http://schemas.openid.net/event/backchannel-logout', (array)$claims['events']))
-            || (array_key_exists('nonce', $claims))) {
-             abort(400, 'Bad request');
+            || (array_key_exists('nonce', $claims))
+        ) {
+            abort(400, 'Bad request');
         }
 
         $request->session()->setId($claims['sid']);
@@ -44,5 +45,4 @@ class SSOController
             && ((time() - 30) <= $claims['iat'] && $claims['iat'] <= (time() + 30))
         );
     }
-
 }
